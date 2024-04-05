@@ -20,6 +20,7 @@ env_logger = "0.10"
 rustfmt-wrapper = "0.2.1"
 serde_json = "1.0.115"
 schemars = "0.8.16"
+parse-jsonschema = { version = "0.0.1", git = "https://github.com/Novasolar/parse-jsonschema.git" }
 
 [dev-dependencies]
 assert_cmd = "2.0.14"

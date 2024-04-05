@@ -71,8 +71,10 @@ pub fn convert(args: &CliArgs) -> Result<String> {
     let content = std::fs::read_to_string(&args.input)
         .wrap_err_with(|| format!("Failed to open input file: {}", &args.input.display()))?;
 
-    let schema = serde_json::from_str::<schemars::schema::RootSchema>(&content)
+    let schema = serde_json::from_str::<parse_jsonschema::RootSchema>(&content)
         .wrap_err("Failed to parse input file as JSON Schema")?;
+
+    let schema = schema.into();
 
     let mut settings = &mut TypeSpaceSettings::default();
     settings = settings.with_struct_builder(args.use_builder());
